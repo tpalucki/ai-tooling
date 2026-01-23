@@ -77,4 +77,6 @@ for KEYWORD in "$@"; do
     fi
 done
 
+antigravity --new-window "$TARGET_DIR"
+
 echo "🎉 Zakończono!"
