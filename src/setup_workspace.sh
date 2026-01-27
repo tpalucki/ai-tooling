@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# --- KONFIGURACJA ---
+# Nazwa aplikacji, w której ma się otworzyć katalog (dokładna nazwa z macOS)
+OPEN_APP="antigravity"
+
 # 1. WALIDACJA ARGUMENTÓW
 if [ "$#" -lt 1 ]; then
     echo "❌ Błąd: Podaj nazwę katalogu roboczego."
@@ -34,33 +38,27 @@ for KEYWORD in "$@"; do
 
     # --- MAPOWANIE ---
     case "$KEYWORD" in
-        "amazon")
-            REPO_URL="git@github.com:rmiq-net/amazon-integration-service.git"
-            ;;
-        "walmart")
-            REPO_URL="git@github.com:rmiq-net/walmart-integration-service.git"
-            ;;
-        "demo")
-            REPO_URL="git@github.com:rmiq-net/demo-service.git"
-            ;;
-        "catalog")
-            REPO_URL="git@github.com:rmiq-net/catalog-service.git"
-            ;;
-        "common")
-            REPO_URL="git@github.com:rmiq-net/common-libs.git"
-            ;;
-        "instacart")
-            REPO_URL="git@github.com:rmiq-net/instacart-integration-service.git"
-            ;;
-        "wiremock")
-            REPO_URL="git@github.com:rmiq-net/wiremock-deploy.git"
-            ;;
-        "campaign")
-            REPO_URL="git@github.com:rmiq-net/campaign-service.git"
-            ;;
-        *)
-            echo "⚠️  Nieznane słowo kluczowe: '$KEYWORD'. Pomijam."
-            ;;
+        "account")        REPO_URL="git@github.com:rmiq-net/account-service.git" ;;
+        "agent")          REPO_URL="git@github.com:rmiq-net/agent-service.git" ;;
+        "amazon")         REPO_URL="git@github.com:rmiq-net/amazon-integration-service.git" ;;
+        "audit")          REPO_URL="git@github.com:rmiq-net/audit-service.git" ;;
+        "auth")           REPO_URL="git@github.com:rmiq-net/auth-service.git" ;;
+        "campaign")       REPO_URL="git@github.com:rmiq-net/campaign-service.git" ;;
+        "catalog")        REPO_URL="git@github.com:rmiq-net/catalog-service.git" ;;
+        "common")         REPO_URL="git@github.com:rmiq-net/common-libs.git" ;;
+        "demo")           REPO_URL="git@github.com:rmiq-net/demo-service.git" ;;
+        "infrastructure") REPO_URL="git@github.com:rmiq-net/infrastructure.git" ;;
+        "instacart")      REPO_URL="git@github.com:rmiq-net/instacart-integration-service.git" ;;
+        "pentaleap")      REPO_URL="git@github.com:rmiq-net/pentaleap-integration-service.git" ;;
+        "reporting")      REPO_URL="git@github.com:rmiq-net/reporting-service.git" ;;
+        "rmiq-deploy")    REPO_URL="git@github.com:rmiq-net/rmiq-deploy.git" ;;
+        "stripe")         REPO_URL="git@github.com:rmiq-net/stripe-integration-service.git" ;;
+        "target")         REPO_URL="git@github.com:rmiq-net/target-integration-service.git" ;;
+        "ui")             REPO_URL="git@github.com:rmiq-net/ui.git" ;;
+        "walmart")        REPO_URL="git@github.com:rmiq-net/walmart-integration-service.git" ;;
+        "wiremock")       REPO_URL="git@github.com:rmiq-net/wiremock-deploy.git" ;;
+        "workflow")       REPO_URL="git@github.com:rmiq-net/workflow-service.git" ;;
+        *)                echo "⚠️  Nieznane słowo kluczowe: '$KEYWORD'. Pomijam." ;;
     esac
 
     # --- LOGIKA KLONOWANIA ---
@@ -77,6 +75,10 @@ for KEYWORD in "$@"; do
     fi
 done
 
-antigravity --new-window "$TARGET_DIR"
+# 4. OTWIERANIE W GRAVITY
+echo "🚀 Otwieranie workspace w $OPEN_APP..."
+
+# 'open -a' to komenda macOS. Kropka '.' oznacza "otwórz obecny katalog".
+open -a "$OPEN_APP" .
 
 echo "🎉 Zakończono!"

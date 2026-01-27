@@ -46,24 +46,24 @@ This moves the script to your system path (`/usr/local/bin`), making it accessib
 Give the script execution permissions:
 
 ```Bash
-chmod +x run.sh
+chmod +x setup_workspace.sh
 ````
 Move it to the bin directory (renaming it to `run`):
 
 ```Bash
-sudo mv run.sh /usr/local/bin/run
+sudo mv setup_workspace.sh /usr/local/bin/run
 ```
 Done! Type run in your terminal.
 
 ##### Option B: Alias (User only)
 If you prefer keeping the script in your own folder.
 
-Save the script locally (e.g., `~/scripts/run.sh`).
+Save the script locally (e.g., `~/scripts/setup_workspace.sh`).
 
 Add an alias to your shell profile (`.bash_profile` or `.zshrc`):
 
 ```Bash
-echo 'alias run="~/scripts/run.sh"' >> ~/.bash_profile
+echo 'alias run="~/scripts/setup_workspace.sh"' >> ~/.bash_profile
 ```
 
 Refresh your shell:
@@ -77,12 +77,8 @@ To add new repositories or change existing URLs, simply open the script and edit
 
 ```Bash
 case "$KEYWORD" in
-"amazon")
-REPO_URL="git@github.com:rmiq-net/amazon-integration-service.git"
-;;
-"new-service")
-REPO_URL="git@github.com:your-org/new-service.git"
-;;
+"amazon")       REPO_URL="git@github.com:rmiq-net/amazon-integration-service.git" ;;
+"new-service")  REPO_URL="git@github.com:your-org/new-service.git" ;;
 esac
 ```
 ---
